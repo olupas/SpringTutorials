@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="conf/model.properties"/>
+    </bean>
+
+    <!--<context:property-placeholder location="classpath*:conf/model.properties"/>-->
+
+    <bean id="myCar" class="com.ixactsoft.spring.core.beans.model.Car">
+        <constructor-arg index="0" value="${car.year}"/>
+        <constructor-arg index="1" value="${car.name}"/>
+        <property name="type" value="JEEP"/>
+    </bean>
+
+    <bean id="carFactory" class="com.ixactsoft.spring.core.beans.CarFactory">
+        <property name="name" value="factory"/>
+        <property name="year" value="1982"/>
+    </bean>
+
+
+    <bean id="person" class="com.ixactsoft.spring.core.beans.model.Person">
+        <property name="car" ref="carFactory"/>
+    </bean>
+
+    <bean id="president" class="com.ixactsoft.spring.core.beans.model.Person">
+        <property name="car" ref="carFactory"/>
+    </bean>
+
+</beans>
