@@ -7,6 +7,16 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		<property name="name" value="test" />
 	</bean>
 
+    <!--return CarType enum based on description-->
+    <bean id="carTypeEnum" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+       <property name="targetClass" value="com.ixactsoft.spring.core.beans.model.CarType"/>
+       <property name="targetMethod" value="getByDescription"/>
+       <property name="arguments">
+           <value>sedan</value>
+       </property>
+     </bean>
+
+
     <import resource="spring-model-beans.xml"/>
     <import resource="spring-company-beans.xml"/>
 

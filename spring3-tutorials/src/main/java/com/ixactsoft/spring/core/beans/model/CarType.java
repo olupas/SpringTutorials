@@ -9,5 +9,22 @@ package com.ixactsoft.spring.core.beans.model;
  */
 public enum CarType {
 
-   JEEP, VAN, SEDAN
+   JEEP ("jeep"), VAN("van"), SEDAN("sedan");
+
+    private String description;
+
+    private CarType(String description) {
+        this.description = description;
+    }
+
+
+    public static CarType getByDescription(String description) {
+        for (CarType type : values()) {
+            if (type.description.equals(description)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Illegal description "+description);
+    }
+
 }

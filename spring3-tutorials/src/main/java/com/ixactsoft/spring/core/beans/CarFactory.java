@@ -38,7 +38,7 @@ public class CarFactory implements FactoryBean<Car>, InitializingBean {
 
     @Override
     public boolean isSingleton() {
-        return false;
+        return true;
     }
 
 

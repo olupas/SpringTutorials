@@ -14,4 +14,11 @@ public class Person {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "car=" + car +
+                '}';
+    }
 }

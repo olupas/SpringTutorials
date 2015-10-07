@@ -16,9 +16,9 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.spri
         <property name="type" value="JEEP"/>
     </bean>
 
-    <bean id="mycompany" class="com.ixactsoft.spring.core.beans.model.Company" autowire="byName">
-        <!--<property name="president" ref="${company.president}"/>-->
-    </bean>
+    <!--<bean id="mycompany" class="com.ixactsoft.spring.core.beans.model.Company" autowire="byName">-->
+        <!--&lt;!&ndash;<property name="president" ref="${company.president}"/>&ndash;&gt;-->
+    <!--</bean>-->
 
 
 </beans>
