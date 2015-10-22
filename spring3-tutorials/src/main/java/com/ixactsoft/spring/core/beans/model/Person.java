@@ -1,6 +1,7 @@
 package com.ixactsoft.spring.core.beans.model;
 
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,9 +10,10 @@ import org.springframework.beans.factory.BeanNameAware;
  * Time: 21:28
  * To change this template use File | Settings | File Templates.
  */
-public class Person implements BeanNameAware {
+public class Person implements BeanNameAware, InitializingBean {
 
     private Car car;
+    private String name;
 
     public void setCar(Car car) {
         this.car = car;
@@ -21,10 +23,18 @@ public class Person implements BeanNameAware {
         System.out.println("Person.setBeanName" + name);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "car=" + car +
                 '}';
+    }
+
+    public void afterPropertiesSet() throws Exception {
+        System.out.println(this);
     }
 }
