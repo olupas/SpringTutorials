@@ -14,13 +14,13 @@ public class MyEventListener {
     @Order(value = 1)
     public void handleMyEvent(Event event) {
         System.out.println("MyEventListener.handleMyEvent");
-        ;
     }
 
     @EventListener
     @Order(value = 0)
-    public void handleCustomEvent(Event event) {
+    public Boolean handleCustomEvent(Event event) {
         System.out.println("MyEventListener.handleCustomEvent");
+        return Boolean.TRUE;
     }
 
 }
