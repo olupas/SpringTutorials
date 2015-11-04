@@ -15,8 +15,4 @@ public class MySpringEventListener {
         System.out.println("MySpringEventListener.handleContextRefresh " + event.getSource());
     }
 
-    @EventListener
-    public void handleMyEvent(Event event) {
-        System.out.println("MySpringEventListener.handleMyEvent" + event);
-    }
 }
