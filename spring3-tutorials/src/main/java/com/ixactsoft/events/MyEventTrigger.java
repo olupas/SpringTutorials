@@ -15,7 +15,6 @@ public class MyEventTrigger {
     @Autowired
     public MyEventTrigger(ApplicationEventPublisher publisher) {
         this.publisher = publisher;
-        publishEvent(new Event(this, "event!!!!"));
     }
 
     public void publishEvent(Event event) {

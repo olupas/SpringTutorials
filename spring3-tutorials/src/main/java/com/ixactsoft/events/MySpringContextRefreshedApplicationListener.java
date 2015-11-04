@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
  * @author Ovidiu Lupas
  */
 @Component
-public class MyListener implements ApplicationListener<ContextRefreshedEvent> {
+public class MySpringContextRefreshedApplicationListener implements ApplicationListener<ContextRefreshedEvent> {
 
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        System.out.println("MyListener.onApplicationEvent" + event.getSource());
+        System.out.println("MySpringContextRefreshedListener.onApplicationEvent");
     }
 }

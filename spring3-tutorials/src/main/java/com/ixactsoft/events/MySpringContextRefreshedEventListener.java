@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
  * @author Ovidiu Lupas
  */
 @Component
-public class MySpringEventListener {
+public class MySpringContextRefreshedEventListener {
 
     @EventListener
     public void handleContextRefresh(ContextRefreshedEvent event) {
-        System.out.println("MySpringEventListener.handleContextRefresh " + event.getSource());
+        System.out.println("MySpringContextRefreshedEventListener.handleContextRefresh");
     }
 
 }

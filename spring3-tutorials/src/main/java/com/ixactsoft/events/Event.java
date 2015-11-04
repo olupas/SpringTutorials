@@ -1,16 +1,15 @@
 package com.ixactsoft.events;
 
-import org.springframework.context.ApplicationEvent;
-
 /**
  * @author Ovidiu Lupas
  */
-public class Event extends ApplicationEvent {
+public class Event {
 
     private String type;
+    private Object source;
 
     public Event(Object source, String type) {
-        super(source);
+        this.source = source;
         this.type = type;
     }
 
@@ -26,6 +25,7 @@ public class Event extends ApplicationEvent {
     public String toString() {
         return "Event{" +
                 "type='" + type + '\'' +
+                ", source=" + source +
                 '}';
     }
 }
