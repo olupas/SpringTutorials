@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("conf/spring-core-beans.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("conf/spring-app-beans.xml");
         context.start();
 
         HelloWorld obj = (HelloWorld) context.getBean("helloBean");
