@@ -1,5 +1,7 @@
 package com.ixactsoft.spring.core.future;
 
+import java.lang.reflect.Method;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ovidiu Lupas
@@ -8,6 +10,7 @@ package com.ixactsoft.spring.core.future;
  * To change this template use File | Settings | File Templates.
  */
 public class TestBridgeMethods {
+
     public static class A<T> {
         public T getT(T args) {
             return args;
@@ -15,6 +18,7 @@ public class TestBridgeMethods {
     }
 
     public static class B extends A<String> {
+
         public String getT(String args) {
             return args;
         }
@@ -22,6 +26,8 @@ public class TestBridgeMethods {
 
     public static void main(String[] args) {
         A obj = new B();
-        obj.getT(new Object());
+
+        System.out.println(obj.getT("Yahooo!"));
+        System.out.println(obj.getT(new Object()));
     }
 }
