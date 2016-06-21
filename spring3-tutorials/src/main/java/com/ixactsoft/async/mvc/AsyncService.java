@@ -1,5 +1,6 @@
 package com.ixactsoft.async.mvc;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -41,4 +42,18 @@ public class AsyncService {
         LOGGER.info("Execute method asynchronously. " + Thread.currentThread().getName());
     }
 
+    @Async
+    public CompletableFuture<Void> sleep() {
+        LOGGER.info("Execute sleep asynchronously. " + Thread.currentThread().getName());
+        return CompletableFuture.runAsync(() -> {
+            try {
+                LOGGER.info("Execute method asynchronously. " + Thread.currentThread().getName());
+                TimeUnit.SECONDS.sleep(1);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            };
+        } );
+
+    }
 }
