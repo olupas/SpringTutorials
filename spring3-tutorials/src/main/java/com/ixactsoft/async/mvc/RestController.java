@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -99,13 +98,14 @@ public class RestController {
         return "time it took to perform work " + stopwatch;
     }
 
-    @RequestMapping(value = "/asyncresponse", produces = { MediaType.TEXT_HTML_VALUE }, method = RequestMethod.GET)
+    @RequestMapping(value = "/asyncrequest", produces = { MediaType.TEXT_HTML_VALUE }, method = RequestMethod.GET)
     @ResponseBody
-    public Callable<String> asyncResponse() throws Exception {
+    public Callable<String> asyncRequest() throws Exception {
+        LOGGER.info("Call async request on thread: " + Thread.currentThread().getName());
         return new Callable<String>() {
             @Override
             public String call() throws Exception {
-                LOGGER.info("Write response on. " + Thread.currentThread().getName());
+                LOGGER.info("Write response on thread: " + Thread.currentThread().getName());
                 return "Response";
             }
         };
