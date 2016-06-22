@@ -9,12 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Ovidiu Lupas
  */
-@Component
+@Service
 public class AsyncService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AsyncService.class);
