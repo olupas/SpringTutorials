@@ -1,5 +1,6 @@
 package com.ixactsoft.async.mvc;
 
+import java.sql.Time;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.async.DeferredResult;
 
 /**
  * @author Ovidiu Lupas
@@ -109,6 +111,34 @@ public class RestController {
                 return "Response";
             }
         };
+    }
+
+    @RequestMapping(value = "/deferred", produces = { MediaType.TEXT_HTML_VALUE }, method = RequestMethod.GET)
+    @ResponseBody
+    public DeferredResult<String> asyncRequestDeferred() throws Exception {
+        LOGGER.info("Call deferred request on thread: " + Thread.currentThread().getName());
+
+        final DeferredResult<String> deferredResult = new DeferredResult<>();
+        deferredResult.onCompletion(() -> {
+            LOGGER.info("Completed: " + Thread.currentThread().getName());
+        });
+
+        // the service computes the deferredResult in a sync fashion
+        //asyncService.process(deferredResult);
+
+        CompletableFuture.runAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).whenComplete((r, t) -> {
+            LOGGER.info("Writing request");
+            deferredResult.setResult("Simulating a long running task!");
+        });
+
+        return deferredResult;
     }
 
 }

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.async.DeferredResult;
 
 /**
  * @author Ovidiu Lupas
@@ -55,5 +56,16 @@ public class AsyncService {
             };
         } );
 
+    }
+
+    @Async("threadPoolTaskExecutor")
+    public void process(DeferredResult<String> result) {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        result.setResult("Simulating a long running task");
     }
 }
